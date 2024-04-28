@@ -4,9 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>GMAT Math Prep</title>
 </head>
-<body>
-    
+<body class="flex-column">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">GMAT Math Prep</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#" id="homeLink">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#arithSeriesDiv" id="arithmeticSeries">Arithmethic Series</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div id="applicationHomeInfo" class="container">
+            <div class="flex-column">
+                <h2>Welcome!</h2>
+                <div>
+                    This application is designed to provide explanation and practice problems that are representative of 
+                    mathematics questions that appear on the GMAT.  I will be adding additional information in time, but 
+                    I don't know if the application will grow to be exhaustive and cover everything that appear on the 
+                    exam.
+                </div>
+            </div>
+        </div>
+        <div id="arithSeriesDiv" class="container display-none">
+            <div class="flex-column">
+                <h2>Arithmetic Series</h2>
+                <div>
+                    Arithmetic Series are series that have a consistent gap between successive members of the series.  This 
+                    gap between the values in the series is known as the common difference.  Another defining feature of 
+                    any arithmetic series is that for a truncated series, the mean and median of the terms in question are 
+                    always the same value.  Note that a series in which all values are the same is an arithmetic series with 
+                    common difference equal to zero.
+                </div>
+                <h4>Series Features</h4>
+                <div>
+                    Here are the main features of an arithmetic series.
+                    <ul class="flex-column">
+                        <li class="col-4 col-sm-10">Common difference: same gap between successive members of the series</li>
+                        <li class="col-4 col-sm-10">Identical mean and median</li>
+                        <li class="col-4 col-sm-10">
+                            <div>Specific term in series (d is the common difference)</div>
+                            <div>a<sub>n</sub> = a<sub>1</sub> + d&sdot;(n -1)</div>
+                            <div>a<sub>n</sub> = a<sub>0</sub> + d&sdot;n</div>
+                        </li>
+                        <li class="col-4 col-sm-10">
+                            <div>Sum of truncated series of n terms</div>
+                            <div class="row justify-content-start">
+                                <div class="col-12 d-flex align-items-center">
+                                    <span>S<sub>n</sub>&nbsp;=&nbsp;</span>
+                                    <span class="flex-column">
+                                        <div class="d-flex justify-content-center"><div class="border-2 border-bottom border-dark">n&sdot;(a<sub>1</sub> + a<sub>n</sub>)</div></div>
+                                        <div class="d-flex justify-content-center"><div>2</div></div>
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <h4>Example Series</h4>
+                <div id="arithSeriesExDiv1"></div>
+                <button class="btn btn-primary mt-2 mb-2" id="startArithmeticExamples">Start Examples</button>
+                <div class="d-flex flex-wrap" id="arithExampleProblemDiv"></div>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+    <script src="./js/shared/shared-functions.js"></script>
+    <script src="./js/models/arithmetic-sequence.js"></script>
+    <script src="./js/controllers/control-variables.js"></script>
+    <script src="./js/controllers/arithmetic-controller.js"></script>
 </body>
 </html>
