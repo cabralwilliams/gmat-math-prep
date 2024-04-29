@@ -44,7 +44,14 @@ function runArithmeticExamples() {
         headingElement.textContent = `Question ${arithmeticQuestionCount}`;
         arithExampleProblemDiv.append(headingElement, arithmeticQuestionandAnswerElement);
     } else {
-
+        const studentResponse = parseFloat(document.getElementById('response1').value);
+        arithmeticExampleStats.questionObjects.push(arithmeticQuestionAndAnswer);
+        arithmeticExampleStats.responses.push(studentResponse);
+        arithmeticQuestionCount = 0;
+        arithExampleProblemDiv.innerHTML = '';
+        const performanceStats = getPracticeStatsElement(arithmeticExampleStats, 'Arithmetic Sequence Results');
+        arithExampleProblemDiv.appendChild(performanceStats);
+        document.getElementById('startArithmeticExamples').classList.remove('display-none');
     }
 }
 
