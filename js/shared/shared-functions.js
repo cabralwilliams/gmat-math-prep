@@ -56,3 +56,57 @@ function getPositiveTermEnding(termNo = 1) {
         }
     }
 }
+
+function getResultRow(statisticsObject, questionNumber) {
+    const outputRow = document.createElement('tr');
+    outputRow.className = 'd-flex justify-content-evenly';
+    const numberTd = document.createElement('tr');
+    numberTd.className = 'col-1 pl-1 pr-1';
+    const questionTd = document.createElement('td');
+    questionTd.className = 'col-3 pl-1 pr-1';
+    const answerTd = document.createElement('td');
+    answerTd.className = 'col-1 pl-1 pr-1';
+    const responseTd = document.createElement('td');
+    responseTd.className = 'col-1 pl-1 pr-1';
+    const statusTd = document.createElement('td');
+    statusTd.className = 'col-1 pl-1 pr-1';
+    const explanationTd = document.createElement('td');
+    explanationTd.className = 'col-3 pl-1 pr-1';
+    numberTd.textContent = questionNumber;
+    questionTd.textContent = statisticsObject.questionOb.question;
+    answerTd.textContent = statisticsObject.questionOb.answer;
+    responseTd.textContent = statisticsObject.response;
+    statusTd.textContent = statisticsObject.questionOb.answer === statisticsObject.response;
+    explanationTd.textContent = statisticsObject.questionOb.explanation;
+    outputRow.append(numberTd, questionTd, answerTd, responseTd, statusTd, explanationTd);
+    return outputRow;
+}
+
+function getPracticeStatsElement(statisticsObject, title) {
+    const mappedRows = statisticsObject.questionObjects.map((ob, i) => {
+        const objectInfo = {
+            questionOb: ob,
+            response: statisticsObject.responses[i]
+        };
+        return getResultRow(objectInfo, i + 1);
+    });
+    const outputDiv = document.createElement('div');
+    outputDiv.className = 'd-flex flex-column mt-2 mb-2';
+    const titleHeader = document.createElement('h3');
+    titleHeader.textContent = title;
+    const outputTable = document.createElement('table');
+    const tableHeaderRow = document.createElement('tr');
+    tableHeaderRow.className = 'd-flex justify-content-evenly';
+    const tableHeaderStrs = ['Q#', 'Question', 'Correct Answer', 'Your Response', 'Correct?', 'Explanation'];
+    const headerColumns = [1,3,1,1,1,3];
+    const headerEls = tableHeaderStrs.map((h, i) => {
+        const nextHeader = document.createElement('th');
+        nextHeader.textContent = h;
+        nextHeader.className = `col-${headerColumns[i]} pl-1 pr-1`;
+        return nextHeader;
+    });
+    tableHeaderRow.append(...headerEls);
+    outputTable.append(tableHeaderRow, ...mappedRows);
+    outputDiv.append(titleHeader, outputTable);
+    return outputDiv;
+}
